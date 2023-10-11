@@ -14,7 +14,8 @@ from users.serializers import UserSerializer
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = [IsAuthenticated | IsNewUser]
+    permission_classes = [IsAuthenticated | IsNewUser]
+    filterset_fields = ['username']
 
 
 # def user_logout(request):

@@ -19,16 +19,23 @@ class UserSerializer(serializers.ModelSerializer):
             'is_authenticated'
         ]
 
-    def create(self, validated_data):
-        # print(validated_data)
-        password = validated_data.get('password')
-        validated_data['password'] = make_password(password)
-        # print(validated_data['password'])
-        return super().create(validated_data)
+    def validate_password(self, value):
+        print(value)
+        # password = validated_data.get('password')
+        # validated_data['password'] = make_password(password)
+        return make_password(value)
 
-    def update(self, instance, validated_data):
-        password = validated_data.get('password')
-        validated_data['password'] = make_password(password)
-        print(validated_data)
-        return super().update(instance, validated_data)
+    # def create(self, validated_data):
+    #     # print(validated_data)
+    #     password = validated_data.get('password')
+    #     validated_data['password'] = make_password(password)
+    #     # print(validated_data['password'])
+    #     return super().create(validated_data)
+    #
+    # def update(self, instance, validated_data):
+    #     print(validated_data)
+    #     password = validated_data.get('password')
+    #     validated_data['password'] = make_password(password)
+    #     print(validated_data)
+    #     return super().update(instance, validated_data)
 

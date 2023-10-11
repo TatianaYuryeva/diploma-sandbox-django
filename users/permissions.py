@@ -7,8 +7,8 @@ class IsNewUser(BasePermission):
             return True
 
 
-# class IsOwner(BasePermission):
-#     def has_object_permission(self, request, view, obj):
-#         if request.method == 'POST':
-#             return True
-#         return request.user == obj
+class IsOwner(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method == 'POST':
+            return True
+        return request.user == obj
